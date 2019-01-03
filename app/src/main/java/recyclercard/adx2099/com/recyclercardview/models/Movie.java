@@ -1,4 +1,4 @@
-package recyclercard.adx2099.com.recyclercardview;
+package recyclercard.adx2099.com.recyclercardview.models;
 
 public class Movie {
     public String name;

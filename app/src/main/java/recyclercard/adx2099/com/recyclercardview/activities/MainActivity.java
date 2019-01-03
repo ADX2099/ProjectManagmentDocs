@@ -1,4 +1,4 @@
-package recyclercard.adx2099.com.recyclercardview;
+package recyclercard.adx2099.com.recyclercardview.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,10 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import recyclercard.adx2099.com.recyclercardview.models.Movie;
+import recyclercard.adx2099.com.recyclercardview.adapters.MyAdapter;
+import recyclercard.adx2099.com.recyclercardview.R;
 
 public class MainActivity extends AppCompatActivity {
     private List<Movie> movies;
@@ -30,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MyAdapter(movies, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Movie movie, int position) {
-                //deleteName(position);
+                removeMovie(position);
             }
         });
 
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.add_name:
-                //this.addName(0);
+                this.addMovie(0);
                 return true;
                 default:
                     return super.onOptionsItemSelected(item);
@@ -69,4 +73,14 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    private void addMovie(int position){
+        movies.add(position, new Movie("New image " + (++counter),R.drawable.newmovie));
+        mAdapter.notifyItemInserted(position);
+        mLayoutManager.scrollToPosition(position);
+    }
+
+    private void removeMovie(int position){
+        movies.remove(position);
+        mAdapter.notifyItemRemoved(position);
+    }
 }

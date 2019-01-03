@@ -1,4 +1,4 @@
-package recyclercard.adx2099.com.recyclercardview;
+package recyclercard.adx2099.com.recyclercardview.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import recyclercard.adx2099.com.recyclercardview.models.Movie;
+import recyclercard.adx2099.com.recyclercardview.R;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Movie> movies;
